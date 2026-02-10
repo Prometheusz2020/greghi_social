@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galeria de Projetos - GREGHI Móveis Planejados.">
+    <title>Projetos - GREGHI Móveis Planejados</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- QR Code Library (Optional here, but keeping for consistency if footer needs it) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <main class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="assets/logo-placeholder.svg" alt="Greghi Logo" id="logo" onerror="this.src='https://via.placeholder.com/150x150?text=GREGHI'">
+                </a>
+            </div>
+            <h1>Nossos Projetos</h1>
+            <a href="index.html" class="btn btn-outline" style="max-width: 200px; margin: 1rem auto;">
+                <span class="icon">⬅️</span> Voltar ao Início
+            </a>
+        </header>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Javascript will populate this or we hardcode for SEO/Simplicity. 
+                     Hardcoding allows user to just replace files easier. -->
+                <div class="gallery-item"><img src="assets/gallery/img1.jpg" alt="Projeto 1" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+1'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img2.jpg" alt="Projeto 2" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+2'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img3.jpg" alt="Projeto 3" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+3'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img4.jpg" alt="Projeto 4" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+4'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img5.jpg" alt="Projeto 5" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+5'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img6.jpg" alt="Projeto 6" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+6'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img7.jpg" alt="Projeto 7" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+7'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img8.jpg" alt="Projeto 8" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+8'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img9.jpg" alt="Projeto 9" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+9'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img10.jpg" alt="Projeto 10" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+10'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img11.jpg" alt="Projeto 11" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+11'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img12.jpg" alt="Projeto 12" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+12'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img13.jpg" alt="Projeto 13" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+13'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img14.jpg" alt="Projeto 14" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+14'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img15.jpg" alt="Projeto 15" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+15'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img16.jpg" alt="Projeto 16" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+16'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img17.jpg" alt="Projeto 17" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+17'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img18.jpg" alt="Projeto 18" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+18'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img19.jpg" alt="Projeto 19" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+19'"></div>
+                <div class="gallery-item"><img src="assets/gallery/img20.jpg" alt="Projeto 20" onerror="this.src='https://via.placeholder.com/400x400?text=Projeto+20'"></div>
+            </div>
+            
+            <!-- Lightbox Modal -->
+            <div id="lightbox" class="lightbox hidden">
+                <span class="close-lightbox">&times;</span>
+                <img class="lightbox-content" id="lightbox-img">
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="copyright">
+                &copy; <span id="year"></span> GREGHI Móveis Planejados.
+            </div>
+            <div class="copyright">
+                &copy; <a href="https://ztilabs.com.br" target="_blank" style="color: inherit; text-decoration: none;">ZTI Labs</a>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -5,27 +5,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Form Handling
     const form = document.getElementById('quoteForm');
     
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const service = document.getElementById('service').value;
-        const details = document.getElementById('details').value;
-        
-        // Construct WhatsApp Message
-        const phoneNumber = '5519989404946';
-        
-        const message = `*Olá! Gostaria de um orçamento.*\n\n` +
-                        `👤 *Nome:* ${name}\n` +
-                        `🛠 *Serviço:* ${service}\n` +
-                        `📝 *Detalhes:* ${details}`;
-        
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-        
-        // Open WhatsApp
-        window.open(whatsappUrl, '_blank');
-    });
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const service = document.getElementById('service').value;
+            const details = document.getElementById('details').value;
+            
+            // Construct WhatsApp Message
+            const phoneNumber = '5519989404946';
+            
+            const message = `*Olá! Gostaria de um orçamento.*\n\n` +
+                            `👤 *Nome:* ${name}\n` +
+                            `🛠 *Serviço:* ${service}\n` +
+                            `📝 *Detalhes:* ${details}`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+        });
+    }
 
     // QR Code Generation
     const showQrBtn = document.getElementById('showQrBtn');
@@ -33,44 +35,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const qrCodeDiv = document.getElementById('qrcode');
     let qrCodeGenerated = false;
 
-    showQrBtn.addEventListener('click', () => {
-        if (!qrCodeGenerated) {
-            // Clear previous if any
-            qrCodeDiv.innerHTML = '';
+    if (showQrBtn) {
+        showQrBtn.addEventListener('click', () => {
+            if (!qrCodeGenerated) {
+                // Clear previous if any
+                qrCodeDiv.innerHTML = '';
+                
+                // Generate new QR Code
+                new QRCode(qrCodeDiv, {
+                    text: window.location.href, // Use current URL
+                    width: 200,
+                    height: 200,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+                
+                qrCodeGenerated = true;
+            }
             
-            // Generate new QR Code
-            new QRCode(qrCodeDiv, {
-                text: window.location.href, // Use current URL
-                width: 200,
-                height: 200,
-                colorDark : "#000000",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
-            });
-            
-            qrCodeGenerated = true;
-        }
-        
-        // Toggle visibility
-        if (qrContainer.classList.contains('hidden')) {
-            qrContainer.classList.remove('hidden');
-            showQrBtn.innerHTML = '<span class="icon">🔼</span> Ocultar QR Code';
-        } else {
-            qrContainer.classList.add('hidden');
-            showQrBtn.innerHTML = '<span class="icon">🔗</span> Gerar QR Code da Página';
-        }
-    });
+            // Toggle visibility
+            if (qrContainer.classList.contains('hidden')) {
+                qrContainer.classList.remove('hidden');
+                showQrBtn.innerHTML = '<span class="icon">🔼</span> Ocultar QR Code';
+            } else {
+                qrContainer.classList.add('hidden');
+                showQrBtn.innerHTML = '<span class="icon">🔗</span> Gerar QR Code da Página';
+            }
+        });
+    }
 
     // Download QR Code
-    document.getElementById('downloadQrBtn').addEventListener('click', () => {
-        const img = qrCodeDiv.querySelector('img');
-        if (img) {
-            const link = document.createElement('a');
-            link.href = img.src;
-            link.download = 'greghi-qrcode.png';
-            link.click();
-        }
-    });
+    const downloadQrBtn = document.getElementById('downloadQrBtn');
+    if (downloadQrBtn) {
+        downloadQrBtn.addEventListener('click', () => {
+            const img = qrCodeDiv ? qrCodeDiv.querySelector('img') : null;
+            if (img) {
+                const link = document.createElement('a');
+                link.href = img.src;
+                link.download = 'greghi-qrcode.png';
+                link.click();
+            }
+        });
+    }
 
     // Lightbox Logic
     const galleryItems = document.querySelectorAll('.gallery-item img');
@@ -78,27 +85,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxImg = document.getElementById('lightbox-img');
     const closeLightbox = document.querySelector('.close-lightbox');
 
-    galleryItems.forEach(img => {
-        img.addEventListener('click', () => {
-            lightbox.classList.remove('hidden');
-            // Use the same src, or ideally a high-res version if available
-            lightboxImg.src = img.src;
+    if (lightbox && closeLightbox) {
+        galleryItems.forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.classList.remove('hidden');
+                // Use the same src, or ideally a high-res version if available
+                lightboxImg.src = img.src;
+            });
         });
-    });
 
-    closeLightbox.addEventListener('click', () => {
-        lightbox.classList.add('hidden');
-    });
-
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
+        closeLightbox.addEventListener('click', () => {
             lightbox.classList.add('hidden');
-        }
-    });
+        });
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
-            lightbox.classList.add('hidden');
-        }
-    });
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.add('hidden');
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+                lightbox.classList.add('hidden');
+            }
+        });
+    }
 });
