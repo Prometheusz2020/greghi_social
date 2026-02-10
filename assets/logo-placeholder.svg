@@ -1,4 +1,14 @@
-<svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="75" cy="75" r="70" fill="#000" stroke="#c5a065" stroke-width="4"/>
-  <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#fff" font-family="Arial, sans-serif" font-size="24" font-weight="bold">GREGHI</text>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Wood Circle Background -->
+  <circle cx="100" cy="100" r="98" fill="#E8DCC5" stroke="#D3C0A0" stroke-width="2"/>
+  
+  <!-- Main Text -->
+  <text x="100" y="95" text-anchor="middle" fill="#333333" font-family="Arial, sans-serif" font-size="48" font-weight="900" letter-spacing="-1">GREGHI</text>
+  
+  <!-- Subtitle -->
+  <text x="100" y="125" text-anchor="middle" fill="#555555" font-family="Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="2">MÓVEIS PLANEJADOS</text>
+  
+  <!-- Decorative dots/arrows sim -->
+  <text x="25" y="125" text-anchor="middle" fill="#555555" font-size="10">◄</text>
+  <text x="175" y="125" text-anchor="middle" fill="#555555" font-size="10">►</text>
 </svg>
