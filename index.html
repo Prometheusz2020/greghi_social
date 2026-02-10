@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GREGHI – Móveis Planejados. Soluções sob medida para residências e negócios. Marcenaria, Serralheria e Comunicação Visual em Mococa-SP.">
+    <title>GREGHI – Móveis Planejados</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <main class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-container">
+                <img src="assets/logo-placeholder.svg" alt="Greghi Logo" id="logo" onerror="this.src='https://via.placeholder.com/150x150?text=GREGHI'">
+            </div>
+            <h1>GREGHI</h1>
+            <p class="subtitle">Móveis Planejados</p>
+            <p class="tagline">Soluções sob medida para residências e negócios</p>
+        </header>
+
+        <!-- Bio / Services -->
+        <section class="bio">
+            <ul class="specialties">
+                <li>✨ Móveis Planejados</li>
+                <li>🏢 Montagem de Lojas</li>
+                <li>🛠️ Serralheria e ACM</li>
+                <li>📍 Mococa – SP e região</li>
+            </ul>
+        </section>
+
+        <!-- Use "primary" links first -->
+        <section class="links">
+            <a href="https://wa.me/5519989404946" class="btn btn-primary" target="_blank">
+                <span class="icon">📲</span> Falar no WhatsApp
+            </a>
+            <a href="https://instagram.com/marcenariagreghi" class="btn btn-instagram" target="_blank">
+                <span class="icon">📸</span> Instagram @marcenariagreghi
+            </a>
+        </section>
+
+        <!-- Quote Form -->
+        <section class="quote-form-section">
+            <h2>Solicite um Orçamento</h2>
+            <form id="quoteForm">
+                <div class="form-group">
+                    <label for="name">Seu Nome</label>
+                    <input type="text" id="name" placeholder="Digite seu nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Tipo de Serviço</label>
+                    <select id="service" required>
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="Móveis Planejados">Móveis Planejados</option>
+                        <option value="Montagem de Loja">Montagem de Loja Comercial</option>
+                        <option value="Serralheria">Serralheria</option>
+                        <option value="Fachada ACM">Fachada / ACM</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="details">Detalhes do Projeto</label>
+                    <textarea id="details" rows="3" placeholder="Descreva brevemente o que precisa..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-submit">
+                    <span class="icon">🚀</span> Enviar Pedido
+                </button>
+            </form>
+        </section>
+
+        <!-- Secondary Links / Services as buttons -->
+        <section class="links secondary">
+            <h3>Nossos Serviços</h3>
+            <div class="grid-buttons">
+                <div class="card">🪑 Móveis Sob Medida</div>
+                <div class="card">🏪 Lojas Comerciais</div>
+                <div class="card">🔩 Serralheria</div>
+                <div class="card">🪧 Comunicação Visual</div>
+            </div>
+        </section>
+
+        <!-- QR Code Section -->
+        <section class="qrcode-section">
+            <button id="showQrBtn" class="btn btn-outline">
+                <span class="icon">🔗</span> Gerar QR Code da Página
+            </button>
+            <div id="qrcode-container" class="hidden">
+                <div id="qrcode"></div>
+                <p>Escaneie para compartilhar</p>
+                <button id="downloadQrBtn" class="btn-text">Baixar QR Code</button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>WhatsApp: (19) 98940-4946</p>
+            <p>Mococa – SP</p>
+            <div class="copyright">
+                &copy; <span id="year"></span> GREGHI Móveis Planejados.
+            </div>
+             <div class="copyright">
+                &copy; <a href="https://ztilabs.com.br" target="_blank" style="color: inherit; text-decoration: none;">ZTI Labs</a>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
