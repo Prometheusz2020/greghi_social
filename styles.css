@@ -9,6 +9,7 @@
     --instagram-color: #E1306C;
     --border-radius: 12px;
     --container-width: 480px; /* Mobile focused max-width */
+    --desktop-width: 1024px;
 }
 
 * {
@@ -47,6 +48,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    transition: max-width 0.3s ease;
 }
 
 /* Header */
@@ -227,6 +229,77 @@ input:focus, select:focus, textarea:focus {
     color: #ddd;
 }
 
+/* Gallery Section */
+.gallery-section {
+    margin-top: 1rem;
+}
+
+.gallery-section h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.gallery-item {
+    aspect-ratio: 1; /* Square images */
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #2a2a2a;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox.hidden {
+    display: none;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 /* QR Code */
 .qrcode-section {
     text-align: center;
@@ -253,7 +326,6 @@ input:focus, select:focus, textarea:focus {
 .btn-text {
     background: none;
     border: none;
-    color: var(--accent-color); /* Make link text accent color, but on white bg it might need contrast. */
     color: #000; /* Use black for contrast on white QR card */
     text-decoration: underline;
     cursor: pointer;
@@ -275,9 +347,63 @@ footer {
     opacity: 0.7;
 }
 
-/* Responsive */
+/* 
+   ---------------------------
+   RESPONSIVE / DESKTOP STYLES 
+   ---------------------------
+*/
 @media (min-width: 768px) {
     .container {
-        padding: 3rem;
+        max-width: var(--desktop-width);
+        padding: 4rem 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two columns */
+        gap: 3rem;
+        align-items: start;
+    }
+
+    /* Left Column Elements (Header, Bio, Contacts) */
+    header, .bio, .links:not(.secondary), .quote-form-section {
+        grid-column: 1 / 2;
+    }
+
+    /* Right Column Elements (Services Grid, Gallery) */
+    .links.secondary {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2; /* Move services to top right */
+    }
+
+    /* Gallery Spans Full Width or stays on right? 
+       Let's make gallery span full width at bottom or take right column space better.
+       Actually, let's put Gallery in right column below services.
+    */
+    .gallery-section {
+        grid-column: 2 / 3;
+        grid-row: 2 / 5; /* Span down */
+    }
+
+    /* Specific Desktop Tweaks */
+    .quote-form-section {
+        grid-row: 2 / 5; /* Align with gallery */
+    }
+    
+    /* Footer & QR always full width at bottom */
+    .qrcode-section, footer {
+        grid-column: 1 / -1;
+    }
+
+    /* Grid Adjustments for Desktop */
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 cols on tablet/desktop small */
+    }
+
+    .logo-container {
+        margin: 0 auto 1.5rem; /* Keep centered in its column */
+    }
+}
+
+@media (min-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 cols on wide screens */
     }
 }
